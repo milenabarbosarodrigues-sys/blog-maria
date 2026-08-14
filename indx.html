@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia de Aparições de Nossa Senhora</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --primary: #1e3d59;
+            --primary-hover: #173046;
+            --bg-body: #f5f7fa;
+            --card-bg: #ffffff;
+            --text-main: #2b2b2b;
+            --text-muted: #666666;
+            --accent-gold: #c5a059;
+            --border-radius: 16px;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* HEADER HERO */
+        header {
+            background: linear-gradient(135deg, #1e3d59 0%, #17b978 100%);
+            color: white;
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 10px 20px rgba(30, 61, 89, 0.15);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        /* CONTAINER GENERAL */
+        .container {
+            max-width: 900px;
+            margin: 30px auto 50px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin-bottom: 25px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid #dcd0ff;
+        }
+
+        /* CARTÃO DA LISTA PRINCIPAL */
+        .apparition-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 24px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+            border: 1px solid #e1e8ed;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .apparition-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .card-layout {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .card-layout td {
+            vertical-align: middle;
+        }
+
+        .img-col {
+            width: 150px;
+            padding-right: 20px;
+        }
+
+        .item-img {
+            width: 100%;
+            max-width: 140px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+            display: block;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .card-title-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .card-title-link:hover {
+            color: #17b978;
+        }
+
+        /* BADGES */
+        .badge-group {
+            margin: 8px 0 12px 0;
+        }
+
+        .badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            margin-right: 6px;
+        }
+
+        .badge-location {
+            background-color: #e8f4f8;
+            color: var(--primary);
+        }
+
+        .badge-date {
+            background-color: #fcf4e6;
+            color: var(--accent-gold);
+        }
+
+        .btn-ver-mais {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 18px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-ver-mais:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* ESTILO DA PÁGINA DE DETALHES (TEXTÃO) */
+        .detail-page {
+            display: none; /* Fica escondido por padrão */
+            background: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            margin-top: 20px;
+        }
+
+        .btn-voltar {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 8px 16px;
+            background-color: #e8f4f8;
+            color: var(--primary);
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-voltar:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .detail-img {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin: 15px 0;
+        }
+
+        /* RESPONSIVIDADE PARA CELULAR */
+        @media (max-width: 600px) {
+            .card-layout, .card-layout tbody, .card-layout tr, .card-layout td {
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+            .img-col {
+                width: 100%;
+                padding-right: 0;
+                margin-bottom: 15px;
+            }
+            .item-img {
+                margin: 0 auto;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid #e1e8ed;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Aparições de Nossa Senhora</h1>
+        <p>Clique no nome de uma aparição para ler a história completa, ver textos e fotos.</p>
+    </header>
+
+    <div class="container">
+
+        <div id="lista-principal">
+            <h2 class="section-title">Guia Principais Aparições</h2>
+
+            <div class="apparition-card">
+                <table class="card-layout">
+                    <tr>
+                        <td class="img-col">
+                            <img src="URL_DA_IMAGEM_FATIMA" alt="Nossa Senhora de Fátima" class="item-img" onclick="abrirPagina('detalhe-fatima')">
+                        </td>
+                        <td>
+                            <h3 class="card-title-link" onclick="abrirPagina('detalhe-fatima')">Nossa Senhora de Fátima</h3>
+                            <div class="badge-group">
+                                <span class="badge badge-location">Portugal</span>
+                                <span class="badge badge-date">Ano: 1917</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.95rem;">
+                                Clique para ler a história detalhada sobre as aparições na Cova da Iria aos três pastorinhos e o Milagre do Sol.
+                            </p>
+                            <button class="btn-ver-mais" onclick="abrirPagina('detalhe-fatima')">Ler História Completa →</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="apparition-card">
+                <table class="card-layout">
+                    <tr>
+                        <td class="img-col">
+                            <img src="URL_DA_IMAGEM_LOURDES" alt="Nossa Senhora de Lourdes" class="item-img" onclick="abrirPagina('detalhe-lourdes')">
+                        </td>
+                        <td>
+                            <h3 class="card-title-link" onclick="abrirPagina('detalhe-lourdes')">Nossa Senhora de Lourdes</h3>
+                            <div class="badge-group">
+                                <span class="badge badge-location">França</span>
+                                <span class="badge badge-date">Ano: 1858</span>
+                            </div>
+                            <p style="color: #666; font-size: 0.95rem;">
+                                Conheça a história das 18 aparições na Gruta de Massabielle para Santa Bernadette.
+                            </p>
+                            <button class="btn-ver-mais" onclick="abrirPagina('detalhe-lourdes')">Ler História Completa →</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+        <div id="detalhe-fatima" class="detail-page">
+            <button class="btn-voltar" onclick="voltarParaLista()">← Voltar para a lista</button>
+            
+            <h1 style="color: var(--primary);">Nossa Senhora de Fátima</h1>
+            <p><strong>Local:</strong> Cova da Iria, Portugal | <strong>Ano:</strong> 1917</p>
+
+            <img src="URL_DA_IMAGEM_GRANDE_FATIMA" alt="Fátima" class="detail-img">
+
+            <h2>História Completa</h2>
+            <p>
+                Em 13 de maio de 1917, três crianças — Lúcia, Francisco e Jacinta — apascentavam o rebanho na Cova da Iria quando viram uma luz brilhante e uma Senhora vestida de branco surgindo sobre uma azinheira...
+            </p>
+
+            <h2>Os Três Segredos</h2>
+            <p>
+                Durante as visões, a Virgem Maria transmitiu mensagens fundamentais divididas em três partes conhecidas como o Segredo de Fátima, pedindo a oração do Rosário e a conversão do mundo...
+            </p>
+
+            <h2>O Milagre do Sol</h2>
+            <p>
+                No dia 13 de outubro de 1917, diante de milhares de testemunhas reunidas sob chuva, o sol girou e emitiu luzes coloridas, um fato marcante presenciado por fiéis e jornalistas...
+            </p>
+        </div>
+
+
+        <div id="detalhe-lourdes" class="detail-page">
+            <button class="btn-voltar" onclick="voltarParaLista()">← Voltar para a lista</button>
+            
+            <h1 style="color: var(--primary);">Nossa Senhora de Lourdes</h1>
+            <p><strong>Local:</strong> França | <strong>Ano:</strong> 1858</p>
+
+            <img src="URL_DA_IMAGEM_GRANDE_LOURDES" alt="Lourdes" class="detail-img">
+
+            <h2>História Completa</h2>
+            <p>
+                Na gruta de Massabielle, a jovem Bernadette Soubirous presenciou 18 aparições da Virgem Maria. Em uma das ocasiões, a Virgem revelou ser a "Imaculada Conceição"...
+            </p>
+
+            <h2>A Fonte Milagrosa</h2>
+            <p>
+                Durante uma das aparições, Maria pediu a Bernadette que escavasse o chão com as mãos, de onde brotou uma nascente de água associada a inúmeros relatos de curas...
+            </p>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>Guia de Aparições de Nossa Senhora - Projeto GitHub Pages</p>
+    </footer>
+
+    <script>
+        function abrirPagina(idPagina) {
+            // Esconde a lista principal
+            document.getElementById('lista-principal').style.display = 'none';
+            
+            // Esconde qualquer outra página de detalhes aberta
+            var paginas = document.querySelectorAll('.detail-page');
+            paginas.forEach(p => p.style.display = 'none');
+            
+            // Mostra a página de detalhes escolhida
+            document.getElementById(idPagina).style.display = 'block';
+            
+            // Rola a página suavemente para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function voltarParaLista() {
+            // Esconde todas as páginas de detalhes
+            var paginas = document.querySelectorAll('.detail-page');
+            paginas.forEach(p => p.style.display = 'none');
+            
+            // Mostra a lista principal novamente
+            document.getElementById('lista-principal').style.display = 'block';
+            
+            // Rola para o topo
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+
+</body>
+</html>
